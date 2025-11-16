@@ -1,0 +1,369 @@
+Label        : CH_false
+Command      : dotnet build/Smartian.dll fuzz -p examples/bc/CH_false.bin -a examples/abi/CH_false.abi -t 120 -o examples/output/CH_false --useothersoracle -v 1
+Started      : 2025-11-16 13:36:51 PST
+Working Dir  : /Users/gelo/documents/thesis/smartian
+========================================
+[00:00:00:00] Fuzz target : examples/bc/CH_false.bin
+[00:00:00:00] Fuzzing starts at 01:36:51
+[00:00:00:00] Time limit : 120 s
+[*] EVM Code Copy Analysis started.
+[*] EVM Trampoline Analysis started.
+[*] All done in 0.032476 sec.
+[DEBUG] Analyzing constructor @ 0
+Found sload(<0x0, { }, { }>) @ 0xe
+Found sstore(<0x0, { }, { }>, <T, { }, { CALLER, var_0 }>) @ 0x43
+Found codecopy(<0x0, { }, { }>, _, _), arg# = 0
+constructor: Def = { var_0 }, Use = { var_0 }
+Constructor tainted: { var_0 }
+[DEBUG] Analyzing transfer(1a695230) @ 6f
+Found sload(<0x2, { }, { }>) @ 0x1b5
+Found sload(<0x1, { }, { }>) @ 0x1c2
+transfer(1a695230): Def = {  }, Use = { var_1, var_2 }
+[DEBUG] Analyzing Limit(4f057506) @ 9d
+Found sload(<0x2, { }, { }>) @ 0x2d2
+Limit(4f057506): Def = {  }, Use = { var_2 }
+[DEBUG] Analyzing DataBase(8caa5c91) @ c6
+Found sload(<0x1, { }, { }>) @ 0x2db
+DataBase(8caa5c91): Def = {  }, Use = { var_1 }
+[DEBUG] Analyzing Owner(b4a99a4e) @ 11b
+Found sload(<0x0, { }, { }>) @ 0x300
+Owner(b4a99a4e): Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing Set(fd28ec3e) @ 170
+Found sload(<0x0, { }, { }>) @ 0x325
+Found sstore(<0x2, { }, { }>, <T, { }, { }>) @ 0x381
+Found sload(<0x1, { }, { }>) @ 0x38d
+Found sstore(<0x1, { }, { }>, <T, { }, { var_1 }>) @ 0x3c2
+Set(fd28ec3e): (onlyOwner) Def = { var_1, var_2 }, Use = { var_0, var_1 }
+[DEBUG] Analyzing fallback @ 0
+fallback: Def = {  }, Use = {  }
+(4 candidate sequences)
+["Set(fd28ec3e)"; "transfer(1a695230)"]
+["Set(fd28ec3e)"; "Set(fd28ec3e)"]
+["Set(fd28ec3e)"; "Limit(4f057506)"]
+["Set(fd28ec3e)"; "DataBase(8caa5c91)"]
+[00:00:00:00] Start main fuzzing phase
+[00:00:00:00] [*] Save new seed id-00000_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: transfer(1a695230), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00001_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: Limit(4f057506), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00002_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: DataBase(8caa5c91), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00003_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 2 <= ) Function: transfer(1a695230), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000080
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00004_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transfer(1a695230), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 00000000000000000000000000000000000000000000000000004A0000000000
+          Arg1 : address
+                 0000000000030000000000000000000000000000
+(    TX 2    ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 000000000000000000000000000000F400000000
+          Arg2 : uint256
+                 000001000000000000000000000000000000000000000000D800000000000000
+( => TX 3 <= ) Function: transfer(1a695230), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000002000000000000000000F10000000000
+(    TX 4    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 5    ) Function: DataBase(8caa5c91), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000001000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 7    ) Function: Owner(b4a99a4e), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 8    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000A90000000000000000
+          Arg1 : address
+                 00000000000000E0000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00005_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: Set(fd28ec3e), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0040000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000EA0000000000000000007F00000000000000000052000000000127
+
+[00:00:00:00] [*] Save new seed id-00006_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: Set(fd28ec3e), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 6B773032D99FB9AAD6FC267651C445FA7F9301AF
+          Arg2 : uint256
+                 000000000000400000C200000000000000000001000000000000000000000000
+(    TX 2    ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: Owner(b4a99a4e), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: Limit(4f057506), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 5    ) Function: DataBase(8caa5c91), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:01] [*] Save new seed id-00007_00001: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 226CC61B3EAC93CC2CC9D6CB8D61856670D50FAD
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: transfer(1a695230), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000080
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:02] [*] Save new seed id-00008_00002: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 6B773032D99FB9AAD6FC267651C446FA7F9301AF
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: transfer(1a695230), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000080
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:02] Tx#7 found IntegerBugSFuzz at df
+[00:00:00:02] Tx#7 found IntegerBugMythril at df
+[00:00:00:02] [*] Save bug seed id-00000-IB_myth-IB_sfuzz_00002: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 226CC61B3EAC93CC2CC9D6CB8D61856670D50FAD
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000001
+(    TX 2    ) Function: transfer(1a695230), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 000000000200A300000000000000F10000000000
+( => TX 3 <= ) Function: transfer(1a695230), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 00000000000000000000000000000000000000010000000000004A0000000000
+          Arg1 : address
+                 0000001800030000000000000000000000000000
+(    TX 4    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000020000000000000000000000000000003F00000000000000000000000000
+          Arg1 : address
+                 33B808A5AE24C410E8739B5CA2D5EF3931D3E09F
+(    TX 5    ) Function: DataBase(8caa5c91), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000001000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 7    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000A90000000000000000
+          Arg1 : address
+                 00000000000000E0000000000000000000000000
+
+[00:00:00:02] [*] Save new seed id-00009_00002: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 226CC61B3EAC93CC2CC9D6CB8D61856670D50FAD
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000001
+(    TX 2    ) Function: transfer(1a695230), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 000000000200A300000000000000F10000000000
+( => TX 3 <= ) Function: transfer(1a695230), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 00000000000000000000000000000000000000010000000000004A0000000000
+          Arg1 : address
+                 0000001800030000000000000000000000000000
+(    TX 4    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000020000000000000000000000000000003F00000000000000000000000000
+          Arg1 : address
+                 33B808A5AE24C410E8739B5CA2D5EF3931D3E09F
+(    TX 5    ) Function: DataBase(8caa5c91), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000001000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 7    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000A90000000000000000
+          Arg1 : address
+                 00000000000000E0000000000000000000000000
+
+[00:00:00:13] [*] Save new seed id-00010_00013: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: Set(fd28ec3e), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 24CD2EDBA056B7C654A50E8201B619D4F624FDDA
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000001
+(    TX 2    ) Function: transfer(1a695230), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 000000000200A300000000000000F10000000000
+(    TX 3    ) Function: transfer(1a695230), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 00000000000000000000000000000000000000010000000000004A0000000000
+          Arg1 : address
+                 0000001800030000000000000000000000000000
+( => TX 4 <= ) Function: transfer(1a695230), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000020000000000000000000000010000003F00000000000000000000000000
+          Arg1 : address
+                 33B808A5AE24C410E8739B5CA2D5EF3931D3E09F
+(    TX 5    ) Function: DataBase(8caa5c91), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000001000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 7    ) Function: transfer(1a695230), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000A90000000000000000
+          Arg1 : address
+                 00000000000000E0000000000000000000000000
+
+Fuzzing timeout expired.
+[00:00:02:00] ===== Statistics =====
+[00:00:02:00] Total Executions: 9268
+[00:00:02:00] Deployment failures: 0
+[00:00:02:00] Test Cases: 11
+[00:00:02:00] Covered Edges: 40
+[00:00:02:00] Covered Instructions: 469
+[00:00:02:00] Covered Def-Use Chains: 12
+[00:00:02:00] Found Bugs:
+[00:00:02:00]   Assertion Failure: 0
+[00:00:02:00]   Arbitrary Write: 0
+[00:00:02:00]   Block state Dependency: 0
+[00:00:02:00]   Control Hijack: 0
+[00:00:02:00]   Ether Leak: 0
+[00:00:02:00]   Integer Bug: 0
+[00:00:02:00]   Mishandled Exception: 0
+[00:00:02:00]   Multiple Send: 0
+[00:00:02:00]   Reentrancy: 0
+[00:00:02:00]   Suicidal Contract: 0
+[00:00:02:00]   Transaction Origin Use: 0
+[00:00:02:00]   Freezing Ether: 0
+[00:00:02:00]   Requirement Violation: 0
+[00:00:02:00] Done, clean up and exit...
+----------------------------------------
+Finished     : 2025-11-16 13:38:51 PST
+Exit Code    : 0

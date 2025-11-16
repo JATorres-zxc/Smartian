@@ -1,0 +1,819 @@
+Label        : BD_false
+Command      : dotnet build/Smartian.dll fuzz -p examples/bc/BD_false.bin -a examples/abi/BD_false.abi -t 120 -o examples/output/BD_false --useothersoracle -v 1
+Started      : 2025-11-16 13:28:34 PST
+Working Dir  : /Users/gelo/documents/thesis/smartian
+========================================
+[00:00:00:00] Fuzz target : examples/bc/BD_false.bin
+[00:00:00:00] Fuzzing starts at 01:28:34
+[00:00:00:00] Time limit : 120 s
+[*] EVM Code Copy Analysis started.
+[*] EVM Trampoline Analysis started.
+[*] All done in 0.056077 sec.
+[DEBUG] Analyzing constructor @ 0
+Found sstore(<0x2, { }, { }>, <0x595F93E0, { }, { }>) @ 0xc
+Found sstore(<0x3, { }, { }>, <0x594BCD60, { }, { }>) @ 0x14
+Found sstore(<0x4, { }, { }>, <0x6765C793FA10079D000000, { }, { }>) @ 0x23
+Found sload(<0x0, { }, { }>) @ 0x38
+Found sstore(<0x0, { }, { }>, <T, { }, { CALLER, var_0 }>) @ 0x6d
+Found codecopy(<0x0, { }, { }>, _, _), arg# = 0
+constructor: Def = { var_0, var_2, var_3, var_4 }, Use = { var_0 }
+Constructor tainted: { var_0 }
+[DEBUG] Analyzing deadline(29dcb0cf) @ 132
+Found sload(<0x2, { }, { }>) @ 0x34a
+deadline(29dcb0cf): Def = {  }, Use = { var_2 }
+[DEBUG] Analyzing withdraw(3ccfd60b) @ 15b
+Found sload(<0x0, { }, { }>) @ 0x352
+Found sload(<0x0, { }, { }>) @ 0x3ad
+withdraw(3ccfd60b): (onlyOwner) Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing setCap(47786d37) @ 170
+Found sload(<0x0, { }, { }>) @ 0x41e
+Found sstore(<0x4, { }, { }>, <T, { }, { }>) @ 0x47a
+setCap(47786d37): (onlyOwner) Def = { var_4 }, Use = { var_0 }
+[DEBUG] Analyzing shortenDeadline(680a50cb) @ 193
+Found sload(<0x0, { }, { }>) @ 0x483
+Found sload(<0x2, { }, { }>) @ 0x4dc
+Found sstore(<0x2, { }, { }>, <T, { }, { }>) @ 0x4ee
+shortenDeadline(680a50cb): (onlyOwner) Def = { var_2 }, Use = { var_0, var_2 }
+[DEBUG] Analyzing claimTokens(69ffa08a) @ 1b6
+Found sload(<0x0, { }, { }>) @ 0x4fc
+claimTokens(69ffa08a): (onlyOwner) Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing startTime(78e97925) @ 226
+Found sload(<0x3, { }, { }>) @ 0x77e
+startTime(78e97925): Def = {  }, Use = { var_3 }
+[DEBUG] Analyzing acceptOwnership(79ba5097) @ 24f
+Found sload(<0x1, { }, { }>) @ 0x787
+Found sload(<0x1, { }, { }>) @ 0x7dd
+Found sload(<0x0, { }, { }>) @ 0x803
+Found sstore(<0x0, { }, { }>, <T, { }, { var_0, var_1 }>) @ 0x838
+acceptOwnership(79ba5097): Def = { var_0 }, Use = { var_0, var_1 }
+[DEBUG] Analyzing owner(8da5cb5b) @ 264
+Found sload(<0x0, { }, { }>) @ 0x841
+owner(8da5cb5b): Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing changeOwner(a6f9dae1) @ 2b9
+Found sload(<0x0, { }, { }>) @ 0x866
+Found sload(<0x1, { }, { }>) @ 0x8c7
+Found sstore(<0x1, { }, { }>, <T, { }, { var_1 }>) @ 0x8fc
+changeOwner(a6f9dae1): (onlyOwner) Def = { var_1 }, Use = { var_0, var_1 }
+[DEBUG] Analyzing setStartTime(ba278e08) @ 2f2
+Found sload(<0x0, { }, { }>) @ 0x905
+Found sload(<0x3, { }, { }>) @ 0x95e
+Found sstore(<0x3, { }, { }>, <T, { }, { }>) @ 0x971
+Found sstore(<0x2, { }, { }>, <T, { }, { }>) @ 0x978
+setStartTime(ba278e08): (onlyOwner) Def = { var_2, var_3 }, Use = { var_0, var_3 }
+[DEBUG] Analyzing capAmount(e93f57b9) @ 31e
+Found sload(<0x4, { }, { }>) @ 0x980
+capAmount(e93f57b9): Def = {  }, Use = { var_4 }
+[DEBUG] Analyzing fallback @ 0
+Found sload(<0x3, { }, { }>) @ 0xc4
+Found sload(<0x2, { }, { }>) @ 0xcf
+Found sload(<0x4, { }, { }>) @ 0xe0
+Found sload(<0x4, { }, { }>) @ 0x107
+Found sstore(<0x2, { }, { }>, <T, { }, { }>) @ 0x12e
+fallback: Def = { var_2 }, Use = { var_2, var_3, var_4 }
+Pruning out ["fallback"]
+Pruning out ["shortenDeadline(680a50cb)"]
+Pruning out ["changeOwner(a6f9dae1)"]
+Pruning out ["setStartTime(ba278e08)"]
+(19 candidate sequences)
+["acceptOwnership(79ba5097)"; "withdraw(3ccfd60b)"]
+["acceptOwnership(79ba5097)"; "shortenDeadline(680a50cb)"]
+["acceptOwnership(79ba5097)"; "setStartTime(ba278e08)"; "startTime(78e97925)"]
+["acceptOwnership(79ba5097)"; "setStartTime(ba278e08)";
+ "shortenDeadline(680a50cb)"]
+["acceptOwnership(79ba5097)"; "setStartTime(ba278e08)"; "setStartTime(ba278e08)"]
+["acceptOwnership(79ba5097)"; "setStartTime(ba278e08)"; "fallback"]
+["acceptOwnership(79ba5097)"; "setStartTime(ba278e08)"; "deadline(29dcb0cf)"]
+["acceptOwnership(79ba5097)"; "setCap(47786d37)"]
+["acceptOwnership(79ba5097)"; "owner(8da5cb5b)"]
+["acceptOwnership(79ba5097)"; "claimTokens(69ffa08a)"]
+["acceptOwnership(79ba5097)"; "changeOwner(a6f9dae1)"; "changeOwner(a6f9dae1)"]
+["acceptOwnership(79ba5097)"; "changeOwner(a6f9dae1)";
+ "acceptOwnership(79ba5097)"]
+["acceptOwnership(79ba5097)"; "acceptOwnership(79ba5097)"]
+["setCap(47786d37)"; "fallback"; "shortenDeadline(680a50cb)";
+ "shortenDeadline(680a50cb)"]
+["setCap(47786d37)"; "fallback"; "shortenDeadline(680a50cb)"; "fallback"]
+["setCap(47786d37)"; "fallback"; "shortenDeadline(680a50cb)";
+ "deadline(29dcb0cf)"]
+["setCap(47786d37)"; "fallback"; "fallback"]
+["setCap(47786d37)"; "fallback"; "deadline(29dcb0cf)"]
+["setCap(47786d37)"; "capAmount(e93f57b9)"]
+[00:00:00:00] Start main fuzzing phase
+[00:00:00:00] [*] Save new seed id-00000_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: withdraw(3ccfd60b), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00001_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: shortenDeadline(680a50cb), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#2 found BlockstateDependencyMythril at 966
+[00:00:00:00] Tx#2 found BlockstateDependencyManticore at 95f
+[00:00:00:00] [*] Save bug seed id-00000-BD_mant-BD_myth_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: startTime(78e97925), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00002_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: startTime(78e97925), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00003_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#3 found BlockstateDependencyMythril at cb
+[00:00:00:00] Tx#3 found BlockstateDependencyMythril at d8
+[00:00:00:00] Tx#3 found BlockstateDependencyManticore at b6
+[00:00:00:00] Tx#3 found BlockstateDependencyManticore at c5
+[00:00:00:00] Tx#3 found BlockstateDependencyManticore at d0
+[00:00:00:00] [*] Save bug seed id-00001-BD_mant-BD_myth_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00004_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00005_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: deadline(29dcb0cf), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00006_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setCap(47786d37), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00007_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: owner(8da5cb5b), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00008_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: claimTokens(69ffa08a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+          Arg2 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00009_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: withdraw(3ccfd60b), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: changeOwner(a6f9dae1), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00010_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: acceptOwnership(79ba5097), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: withdraw(3ccfd60b), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00011_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: shortenDeadline(680a50cb), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000004000000000000000000000000000
+(    TX 2    ) Function: capAmount(e93f57b9), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: setCap(47786d37), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 4 <= ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000001800000000000000000001
+(    TX 5    ) Function: fallback, From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000002000000000000000000000000CB0000000000000000410000000000
+(    TX 6    ) Function: capAmount(e93f57b9), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 7    ) Function: shortenDeadline(680a50cb), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000800000
+(    TX 8    ) Function: fallback, From: NormalUser3, UseAgent: false
+          Value : uint256
+                 4000000000000000000000000000000000000000000000000000000000000000
+(    TX 9    ) Function: claimTokens(69ffa08a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+          Arg2 : address
+                 0000000000000000004000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00012_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: withdraw(3ccfd60b), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 3 <= ) Function: shortenDeadline(680a50cb), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 8000000000000000000000000000000000000000000000000000000000000001
+
+[00:00:00:00] [*] Save new seed id-00013_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 2 <= ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000002000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000006E00000000000000000000000000000000
+(    TX 3    ) Function: setStartTime(ba278e08), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: capAmount(e93f57b9), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00014_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setCap(47786d37), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 00000000CD000034000000000000001A00000000000000000000000000000000
+(    TX 2    ) Function: startTime(78e97925), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: startTime(78e97925), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: withdraw(3ccfd60b), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00015_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: fallback, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: deadline(29dcb0cf), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: startTime(78e97925), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: withdraw(3ccfd60b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 5    ) Function: startTime(78e97925), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: fallback, From: NormalUser2, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00016_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: shortenDeadline(680a50cb), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 000F0000000000005F04000000000000000000F7000000000000000000410000
+( => TX 2 <= ) Function: acceptOwnership(79ba5097), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: capAmount(e93f57b9), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: setStartTime(ba278e08), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 00000000000000000000000000000000000000000000000000000000000000E0
+          Arg2 : uint256
+                 00000000000000000000003F0000000000000000000000000000001B00000000
+(    TX 5    ) Function: changeOwner(a6f9dae1), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 00000000000010F7000100007700000000000000
+
+[00:00:00:00] Tx#1 found BlockstateDependencySFuzz at c5
+[00:00:00:00] [*] Save bug seed id-00002-BD_sfuzz_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: fallback, From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000008001
+(    TX 2    ) Function: shortenDeadline(680a50cb), From: NormalUser1, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 800000000000000000002100000000000000000000000000007F1A0000000041
+(    TX 3    ) Function: changeOwner(a6f9dae1), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 4    ) Function: shortenDeadline(680a50cb), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 40000000BE000000000000000000000000000000100000000000000000000000
+(    TX 5    ) Function: fallback, From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: startTime(78e97925), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00017_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+(    TX 2    ) Function: claimTokens(69ffa08a), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000001000
+          Arg2 : address
+                 0000000000000000000000000000000000000000
+(    TX 3    ) Function: setCap(47786d37), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 4 <= ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 5    ) Function: startTime(78e97925), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:01] [*] Save new seed id-00018_00001: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: startTime(78e97925), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: claimTokens(69ffa08a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 6B773032D99FB9AAD6FC267651C446FA7F9301AF
+          Arg2 : address
+                 0000000000000000000000000000000000000000
+(    TX 3    ) Function: withdraw(3ccfd60b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: changeOwner(a6f9dae1), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:01] Tx#1 found ReentrancyMythril at 5f1
+[00:00:00:01] Tx#1 found ReentrancyMythril at 6ac
+[00:00:00:01] [*] Save bug seed id-00003-RE_myth_00001: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: claimTokens(69ffa08a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 118A2C24808934116E6AB4C00FF48145D23B09E1
+          Arg2 : address
+                 24CD2EDBA056B7C654A50E8201B619D4F624FDDA
+
+[00:00:00:01] [*] Save new seed id-00019_00001: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: claimTokens(69ffa08a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 118A2C24808934116E6AB4C00FF48145D23B09E1
+          Arg2 : address
+                 24CD2EDBA056B7C654A50E8201B619D4F624FDDA
+
+[00:00:00:01] Tx#2 found BlockstateDependencySFuzz at d0
+[00:00:00:01] [*] Save bug seed id-00004-BD_sfuzz_00001: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000100000000000
+
+[00:00:00:01] [*] Save new seed id-00020_00001: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 000000000000000000000000000000000000000000000000000000001B000000
+(    TX 3    ) Function: changeOwner(a6f9dae1), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 4    ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 00000000000000000000000000000000000000000000000000E9000000000000
+
+[00:00:00:02] [*] Save new seed id-00021_00002: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: acceptOwnership(79ba5097), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 2 <= ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000002000000000000000000000
+(    TX 3    ) Function: changeOwner(a6f9dae1), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 33B808A5AE24C410E8739B5CA2D5EF3931D3E09F
+(    TX 4    ) Function: acceptOwnership(79ba5097), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:03] [*] Save new seed id-00022_00003: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 3FFFFFFFFFFFFFFFFFFFFF97FFFFFFFFFFFFFFFFFFFFFFFFFFDFFFFFFFFFFFFF
+(    TX 2    ) Function: fallback, From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: claimTokens(69ffa08a), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000001000
+          Arg2 : address
+                 0000000000000000000000000000000000000000
+( => TX 4 <= ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 5    ) Function: owner(8da5cb5b), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: setCap(47786d37), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 7    ) Function: fallback, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 8    ) Function: startTime(78e97925), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:03] Tx#4 found BlockstateDependencyILF at 408
+[00:00:00:03] [*] Save bug seed id-00005-BD_ilf_00003: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 000000000000000000000000000000000000000000000000000000001B000000
+(    TX 3    ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 00000000000000000000000000000000000000000000000000E9000000000000
+(    TX 4    ) Function: withdraw(3ccfd60b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 5    ) Function: changeOwner(a6f9dae1), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:03] Tx#6 found ReentrancySFuzz at 408
+[00:00:00:03] [*] Save bug seed id-00006-RE_sfuzz_00003: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 3FFFFFFFFFFFFFFFFFFFFF8AFFFFFFFFFFFFFFFFFFFFFFFFFFDFFFFFFFFFFFFF
+( => TX 2 <= ) Function: fallback, From: NormalUser1, UseAgent: false
+          Value : uint256
+                 000000000000000000000000000000000000000000000000450000F900000001
+(    TX 3    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: owner(8da5cb5b), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 5    ) Function: startTime(78e97925), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: withdraw(3ccfd60b), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 7    ) Function: setCap(47786d37), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 8000000000000000000000000000000000000000000000000000000000000001
+(    TX 8    ) Function: owner(8da5cb5b), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:06] Tx#13 found ReentrancyMythril at 408
+[00:00:00:06] [*] Save bug seed id-00007-RE_myth_00006: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: changeOwner(a6f9dae1), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 33B808A5AE24C410E8739B5CA2D5EF3931D3E09F
+(    TX 2    ) Function: changeOwner(a6f9dae1), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000004000000000000000000000000000
+(    TX 3    ) Function: startTime(78e97925), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: startTime(78e97925), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 5    ) Function: setStartTime(ba278e08), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000044000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: owner(8da5cb5b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 7    ) Function: setStartTime(ba278e08), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000800000000000
+          Arg2 : uint256
+                 003F00000000000000000000000000000000000000000000000000001B000000
+(    TX 8    ) Function: changeOwner(a6f9dae1), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 226CC61B3EAC93CC2CC9D6CB8D61856670D50FAD
+(    TX 9    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 10    ) Function: acceptOwnership(79ba5097), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 11    ) Function: fallback, From: NormalUser2, UseAgent: false
+          Value : uint256
+                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDF7FBFFFFFFFF
+(    TX 12    ) Function: shortenDeadline(680a50cb), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000001000000000000000200000000000000000000
+(    TX 13    ) Function: withdraw(3ccfd60b), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+Fuzzing timeout expired.
+[00:00:02:00] ===== Statistics =====
+[00:00:02:00] Total Executions: 371029
+[00:00:02:00] Deployment failures: 0
+[00:00:02:00] Test Cases: 23
+[00:00:02:00] Covered Edges: 93
+[00:00:02:00] Covered Instructions: 1007
+[00:00:02:00] Covered Def-Use Chains: 24
+[00:00:02:00] Found Bugs:
+[00:00:02:00]   Assertion Failure: 0
+[00:00:02:00]   Arbitrary Write: 0
+[00:00:02:00]   Block state Dependency: 0
+[00:00:02:00]   Control Hijack: 0
+[00:00:02:00]   Ether Leak: 0
+[00:00:02:00]   Integer Bug: 0
+[00:00:02:00]   Mishandled Exception: 0
+[00:00:02:00]   Multiple Send: 0
+[00:00:02:00]   Reentrancy: 0
+[00:00:02:00]   Suicidal Contract: 0
+[00:00:02:00]   Transaction Origin Use: 0
+[00:00:02:00]   Freezing Ether: 0
+[00:00:02:00]   Requirement Violation: 0
+[00:00:02:00] Done, clean up and exit...
+----------------------------------------
+Finished     : 2025-11-16 13:30:34 PST
+Exit Code    : 0

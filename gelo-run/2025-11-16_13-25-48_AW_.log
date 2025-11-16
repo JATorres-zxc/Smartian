@@ -1,0 +1,362 @@
+Label        : AW
+Command      : dotnet build/Smartian.dll fuzz -p examples/bc/AW.bin -a examples/abi/AW.abi -t 120 -o examples/output/AW --useothersoracle -v 1
+Started      : 2025-11-16 13:25:48 PST
+Working Dir  : /Users/gelo/documents/thesis/smartian
+========================================
+[00:00:00:00] Fuzz target : examples/bc/AW.bin
+[00:00:00:00] Fuzzing starts at 01:25:48
+[00:00:00:00] Time limit : 120 s
+[*] EVM Code Copy Analysis started.
+[*] EVM Trampoline Analysis started.
+[*] All done in 0.035028 sec.
+[DEBUG] Analyzing constructor @ 0
+Found sload(<0x0, { }, { }>) @ 0x1a
+Found sstore(<0x0, { }, { }>, <T, { }, { CALLER, var_0 }>) @ 0x4f
+Found codecopy(<0x0, { }, { }>, _, _), arg# = 0
+constructor: Def = { var_0 }, Use = { var_0 }
+Constructor tainted: { var_0 }
+[DEBUG] Analyzing owner(8da5cb5b) @ 6a
+Found sload(<0x0, { }, { }>) @ 0x15f
+owner(8da5cb5b): Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing modifyBonusCode(afdb35d7) @ bf
+Found sload(<0x0, { }, { }>) @ 0x184
+Found sload(<0x1, { }, { }>) @ 0x1de
+Found sload(<0x1, { }, { }>) @ 0x1f3
+Found sstore(<T, { Sha(0x1) }, { }>, <T, { }, { }>) @ 0x20f
+modifyBonusCode(afdb35d7): (onlyOwner) Def = { arr_1 }, Use = { var_0, var_1 }
+[DEBUG] Analyzing popBonusCode(cdc60021) @ eb
+Found sload(<0x0, { }, { }>) @ 0x21b
+Found sload(<0x1, { }, { }>) @ 0x277
+Found sload(<0x1, { }, { }>) @ 0x28a
+Found sload(<0x1, { }, { }>) @ 0x351
+Found sstore(<0x1, { }, { }>, <T, { }, { var_1 }>) @ 0x354
+Found sstore(<T, { Sha(0x1) }, { var_1 }>, <0x0, { }, { }>) @ 0x3bc
+popBonusCode(cdc60021): (onlyOwner) Def = { arr_1, var_1 }, Use = { var_0, var_1 }
+[DEBUG] Analyzing pushBonusCode(d456118a) @ 100
+Found sload(<0x0, { }, { }>) @ 0x2a5
+Found sload(<0x1, { }, { }>) @ 0x2ff
+Found sload(<0x1, { }, { }>) @ 0x37d
+Found sstore(<0x1, { }, { }>, <T, { }, { var_1 }>) @ 0x380
+Found sstore(<T, { Sha(0x1) }, { var_1 }>, <0x0, { }, { }>) @ 0x3bc
+Found sstore(<T, { Sha(0x1) }, { var_1 }>, <T, { }, { }>) @ 0x324
+pushBonusCode(d456118a): (onlyOwner) Def = { arr_1, var_1 }, Use = { var_0, var_1 }
+[DEBUG] Analyzing bonusCodes(d7d13441) @ 123
+Found sload(<0x1, { }, { }>) @ 0x32f
+Found sload(<T, { Sha(0x1) }, { }>) @ 0x34c
+bonusCodes(d7d13441): Def = {  }, Use = { arr_1, var_1 }
+Pruning out ["pushBonusCode(d456118a)"]
+(8 candidate sequences)
+["popBonusCode(cdc60021)"; "pushBonusCode(d456118a)"; "pushBonusCode(d456118a)"]
+["popBonusCode(cdc60021)"; "pushBonusCode(d456118a)"; "popBonusCode(cdc60021)"]
+["popBonusCode(cdc60021)"; "pushBonusCode(d456118a)";
+ "modifyBonusCode(afdb35d7)"]
+["popBonusCode(cdc60021)"; "pushBonusCode(d456118a)"; "bonusCodes(d7d13441)"]
+["popBonusCode(cdc60021)"; "popBonusCode(cdc60021)"]
+["popBonusCode(cdc60021)"; "modifyBonusCode(afdb35d7)"]
+["popBonusCode(cdc60021)"; "bonusCodes(d7d13441)"]
+["modifyBonusCode(afdb35d7)"; "bonusCodes(d7d13441)"]
+[00:00:00:00] Start main fuzzing phase
+[00:00:00:00] Tx#1 found IntegerBug at 291
+[00:00:00:00] Tx#2 found IntegerBug at 303
+[00:00:00:00] Tx#1 found IntegerBugSFuzz at 291
+[00:00:00:00] Tx#2 found IntegerBugSFuzz at 303
+[00:00:00:00] Tx#2 found IntegerBugSFuzz at 31a
+[00:00:00:00] Tx#1 found IntegerBugSFuzz at 36b
+[00:00:00:00] Tx#2 found IntegerBugSFuzz at 395
+[00:00:00:00] Tx#1 found IntegerBugMythril at 291
+[00:00:00:00] Tx#2 found IntegerBugMythril at 303
+[00:00:00:00] Tx#1 found IntegerBugMythril at 36b
+[00:00:00:00] Tx#2 found IntegerBugMythril at 395
+[00:00:00:00] Tx#1 found IntegerBugManticore at 291
+[00:00:00:00] Tx#2 found IntegerBugManticore at 303
+[00:00:00:00] [*] Save bug seed id-00000-IB-IB_mant-IB_myth-IB_sfuzz_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00000_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00001_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: modifyBonusCode(afdb35d7), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#3 found AssertionFailure at 338
+[00:00:00:00] [*] Save bug seed id-00001-AF_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: bonusCodes(d7d13441), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00002_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: bonusCodes(d7d13441), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#2 found IntegerBugSFuzz at 369
+[00:00:00:00] Tx#2 found IntegerBugMythril at 369
+[00:00:00:00] [*] Save bug seed id-00002-IB_myth-IB_sfuzz_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00003_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: modifyBonusCode(afdb35d7), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00004_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: bonusCodes(d7d13441), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00005_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000004100000000000000000000
+(    TX 2    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: owner(8da5cb5b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00006_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+( => TX 2 <= ) Function: pushBonusCode(d456118a), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000014000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00007_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: pushBonusCode(d456118a), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000008000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 3 <= ) Function: modifyBonusCode(afdb35d7), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 000000000000000000000000B900000000000000000000000000000000000000
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00008_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: popBonusCode(cdc60021), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: owner(8da5cb5b), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#3 found IntegerBugSFuzz at 397
+[00:00:00:00] Tx#3 found IntegerBugMythril at 397
+[00:00:00:00] [*] Save bug seed id-00003-IB_myth-IB_sfuzz_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: pushBonusCode(d456118a), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#3 found IntegerBugSFuzz at 344
+[00:00:00:00] [*] Save bug seed id-00004-IB_sfuzz_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: bonusCodes(d7d13441), From: NormalUser1, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 EE00000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:01] Tx#2 found ArbitraryWrite at 20f
+[00:00:00:01] Tx#2 found IntegerBugSFuzz at 208
+[00:00:00:01] [*] Save bug seed id-00005-AW-IB_sfuzz_00001: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: popBonusCode(cdc60021), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 2 <= ) Function: modifyBonusCode(afdb35d7), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 4EF1D2AD89EDF8C4D91132028E8195CDF30BB4B5053D4F8CD260341E26B3BE08
+          Arg2 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+Fuzzing timeout expired.
+[00:00:02:00] ===== Statistics =====
+[00:00:02:00] Total Executions: 327370
+[00:00:02:00] Deployment failures: 0
+[00:00:02:00] Test Cases: 9
+[00:00:02:00] Covered Edges: 51
+[00:00:02:00] Covered Instructions: 533
+[00:00:02:00] Covered Def-Use Chains: 28
+[00:00:02:00] Found Bugs:
+[00:00:02:00]   Assertion Failure: 1
+[00:00:02:00]   Arbitrary Write: 1
+[00:00:02:00]   Block state Dependency: 0
+[00:00:02:00]   Control Hijack: 0
+[00:00:02:00]   Ether Leak: 0
+[00:00:02:00]   Integer Bug: 2
+[00:00:02:00]   Mishandled Exception: 0
+[00:00:02:00]   Multiple Send: 0
+[00:00:02:00]   Reentrancy: 0
+[00:00:02:00]   Suicidal Contract: 0
+[00:00:02:00]   Transaction Origin Use: 0
+[00:00:02:00]   Freezing Ether: 0
+[00:00:02:00]   Requirement Violation: 0
+[00:00:02:00] Done, clean up and exit...
+----------------------------------------
+Finished     : 2025-11-16 13:27:48 PST
+Exit Code    : 0

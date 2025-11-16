@@ -1,0 +1,91 @@
+Label        : MS_true
+Command      : dotnet build/Smartian.dll fuzz -p examples/bc/MS_true.bin -a examples/abi/MS_true.abi -t 120 -o examples/output/MS_true --useothersoracle -v 1
+Started      : 2025-11-16 14:22:44 PST
+Working Dir  : /Users/gelo/documents/thesis/smartian
+========================================
+[00:00:00:00] Fuzz target : examples/bc/MS_true.bin
+[00:00:00:00] Fuzzing starts at 02:22:44
+[00:00:00:00] Time limit : 120 s
+[*] EVM Code Copy Analysis started.
+[*] EVM Trampoline Analysis started.
+[*] All done in 0.019004 sec.
+[DEBUG] Analyzing constructor @ 0
+Found sload(<0x0, { }, { }>) @ 0x13
+Found sload(<0x0, { }, { }>) @ 0x104
+Found sstore(<0x0, { }, { }>, <T, { }, { var_0 }>) @ 0x107
+Found sstore(<T, { Sha(0x0) }, { var_0 }>, <0x0, { }, { }>) @ 0x143
+Found sload(<T, { Sha(0x0) }, { var_0 }>) @ 0x4f
+Found sstore(<T, { Sha(0x0) }, { var_0 }>, <T, { }, { arr_0 }>) @ 0x84
+Found sload(<0x0, { }, { }>) @ 0x8a
+Found sload(<0x0, { }, { }>) @ 0x104
+Found sstore(<0x0, { }, { }>, <T, { }, { var_0 }>) @ 0x107
+Found sstore(<T, { Sha(0x0) }, { var_0 }>, <0x0, { }, { }>) @ 0x143
+Found sload(<T, { Sha(0x0) }, { var_0 }>) @ 0xc6
+Found sstore(<T, { Sha(0x0) }, { var_0 }>, <T, { }, { arr_0 }>) @ 0xfb
+Found codecopy(<0x0, { }, { }>, _, _), arg# = 0
+constructor: Def = { arr_0, var_0 }, Use = { arr_0, var_0 }
+Constructor tainted: {  }
+[DEBUG] Analyzing refundAll(38e771ab) @ 51
+Found sload(<0x0, { }, { }>) @ 0xaf
+Found sload(<0x0, { }, { }>) @ 0xbd
+Found sload(<T, { Sha(0x0) }, { }>) @ 0xd6
+Found sload(<0x0, { }, { }>) @ 0x110
+refundAll(38e771ab): Def = {  }, Use = { arr_0, var_0 }
+[DEBUG] Analyzing refunds(bc3da535) @ 5b
+Found sload(<T, { Sha(*, 0x1) }, { }>) @ 0x167
+refunds(bc3da535): Def = {  }, Use = { map_1 }
+(0 candidate sequences)
+[00:00:00:00] Start main fuzzing phase
+[00:00:00:00] [*] Save new seed id-00000_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: refundAll(38e771ab), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00001_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: refunds(bc3da535), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#1 found MultipleSend at 132
+[00:00:00:00] [*] Save bug seed id-00000-MS_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: refundAll(38e771ab), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000019
+
+Fuzzing timeout expired.
+[00:00:02:00] ===== Statistics =====
+[00:00:02:00] Total Executions: 683062
+[00:00:02:00] Deployment failures: 0
+[00:00:02:00] Test Cases: 2
+[00:00:02:00] Covered Edges: 26
+[00:00:02:00] Covered Instructions: 266
+[00:00:02:00] Covered Def-Use Chains: 0
+[00:00:02:00] Found Bugs:
+[00:00:02:00]   Assertion Failure: 0
+[00:00:02:00]   Arbitrary Write: 0
+[00:00:02:00]   Block state Dependency: 0
+[00:00:02:00]   Control Hijack: 0
+[00:00:02:00]   Ether Leak: 0
+[00:00:02:00]   Integer Bug: 0
+[00:00:02:00]   Mishandled Exception: 0
+[00:00:02:00]   Multiple Send: 1
+[00:00:02:00]   Reentrancy: 0
+[00:00:02:00]   Suicidal Contract: 0
+[00:00:02:00]   Transaction Origin Use: 0
+[00:00:02:00]   Freezing Ether: 0
+[00:00:02:00]   Requirement Violation: 0
+[00:00:02:00] Done, clean up and exit...
+----------------------------------------
+Finished     : 2025-11-16 14:24:44 PST
+Exit Code    : 0

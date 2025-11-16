@@ -1,0 +1,178 @@
+Label        : FE
+Command      : dotnet build/Smartian.dll fuzz -p examples/bc/FE.bin -a examples/abi/FE.abi -t 120 -o examples/output/FE --useothersoracle -v 1
+Started      : 2025-11-16 13:52:21 PST
+Working Dir  : /Users/gelo/documents/thesis/smartian
+========================================
+[00:00:00:00] Fuzz target : examples/bc/FE.bin
+[00:00:00:00] Fuzzing starts at 01:52:21
+[00:00:00:00] Time limit : 120 s
+[*] EVM Code Copy Analysis started.
+[*] EVM Trampoline Analysis started.
+[*] All done in 0.028619 sec.
+[DEBUG] Analyzing constructor @ 0
+Found sload(<0x0, { }, { }>) @ 0xf
+Found sstore(<0x0, { }, { }>, <T, { }, { var_0 }>) @ 0x24
+Found sload(<0x0, { }, { }>) @ 0x30
+Found sstore(<0x0, { }, { }>, <T, { }, { var_0 }>) @ 0x65
+Found sload(<0x0, { }, { }>) @ 0x7e
+Found sstore(<0x0, { }, { }>, <T, { }, { CALLER, var_0 }>) @ 0xb3
+Found codecopy(<0x0, { }, { }>, _, _), arg# = 0
+constructor: Def = { var_0 }, Use = { var_0 }
+Constructor tainted: { var_0 }
+[DEBUG] Analyzing changeLuck(12c0d1ea) @ 72
+Found sload(<0x0, { }, { }>) @ 0x1b0
+Found sload(<0x0, { }, { }>) @ 0x20d
+Found sload(<0x1, { }, { }>) @ 0x220
+Found sstore(<0x1, { }, { }>, <T, { }, { var_1 }>) @ 0x224
+Found sload(<T, { Sha(0x1) }, { var_1 }>) @ 0x251
+Found sstore(<T, { Sha(0x1) }, { var_1 }>, <T, { }, { arr_1, var_0, var_1 }>) @ 0x266
+Found sload(<0x0, { }, { }>) @ 0x272
+Found sstore(<0x0, { }, { }>, <T, { }, { var_0 }>) @ 0x287
+changeLuck(12c0d1ea): (onlyOwner) Def = { arr_1, var_0, var_1 }, Use = { arr_1, var_0, var_1 }
+[DEBUG] Analyzing getLuck(1b413d27) @ 98
+Found sload(<0x0, { }, { }>) @ 0x292
+getLuck(1b413d27): Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing luck(5d1c3171) @ cf
+Found sload(<0x0, { }, { }>) @ 0x2a9
+luck(5d1c3171): Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing owner(8da5cb5b) @ 106
+Found sload(<0x0, { }, { }>) @ 0x2bf
+owner(8da5cb5b): Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing history(a7a38f0b) @ 15d
+Found sload(<0x1, { }, { }>) @ 0x2e4
+Found sload(<T, { Sha(0x1) }, { }>) @ 0x308
+history(a7a38f0b): Def = {  }, Use = { arr_1, var_1 }
+(5 candidate sequences)
+["changeLuck(12c0d1ea)"; "owner(8da5cb5b)"]
+["changeLuck(12c0d1ea)"; "luck(5d1c3171)"]
+["changeLuck(12c0d1ea)"; "history(a7a38f0b)"]
+["changeLuck(12c0d1ea)"; "getLuck(1b413d27)"]
+["changeLuck(12c0d1ea)"; "changeLuck(12c0d1ea)"]
+[00:00:00:00] Start main fuzzing phase
+[00:00:00:00] [*] Save new seed id-00000_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: changeLuck(12c0d1ea), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint32
+                 00000000
+(    TX 2    ) Function: owner(8da5cb5b), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00001_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: changeLuck(12c0d1ea), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint32
+                 00000000
+(    TX 2    ) Function: luck(5d1c3171), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00002_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: changeLuck(12c0d1ea), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint32
+                 00000000
+(    TX 2    ) Function: history(a7a38f0b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00003_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: changeLuck(12c0d1ea), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint32
+                 00000000
+(    TX 2    ) Function: getLuck(1b413d27), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#2 found AssertionFailure at 2ed
+[00:00:00:00] [*] Save bug seed id-00000-AF_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: changeLuck(12c0d1ea), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 00000000000000000000000000000000000000A4000000000000000000000000
+          Arg1 : uint32
+                 A2000022
+(    TX 2    ) Function: history(a7a38f0b), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: owner(8da5cb5b), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00004_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: changeLuck(12c0d1ea), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 00000000000000000000000000000000000000A4000000000000000000000000
+          Arg1 : uint32
+                 A2000022
+(    TX 2    ) Function: history(a7a38f0b), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: owner(8da5cb5b), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00005_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: changeLuck(12c0d1ea), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint32
+                 00000000
+
+Fuzzing timeout expired.
+[00:00:02:00] ===== Statistics =====
+[00:00:02:00] Total Executions: 715449
+[00:00:02:00] Deployment failures: 0
+[00:00:02:00] Test Cases: 6
+[00:00:02:00] Covered Edges: 29
+[00:00:02:00] Covered Instructions: 470
+[00:00:02:00] Covered Def-Use Chains: 10
+[00:00:02:00] Found Bugs:
+[00:00:02:00]   Assertion Failure: 1
+[00:00:02:00]   Arbitrary Write: 0
+[00:00:02:00]   Block state Dependency: 0
+[00:00:02:00]   Control Hijack: 0
+[00:00:02:00]   Ether Leak: 0
+[00:00:02:00]   Integer Bug: 0
+[00:00:02:00]   Mishandled Exception: 0
+[00:00:02:00]   Multiple Send: 0
+[00:00:02:00]   Reentrancy: 0
+[00:00:02:00]   Suicidal Contract: 0
+[00:00:02:00]   Transaction Origin Use: 0
+[00:00:02:00]   Freezing Ether: 0
+[00:00:02:00]   Requirement Violation: 0
+[00:00:02:00] Done, clean up and exit...
+----------------------------------------
+Finished     : 2025-11-16 13:54:21 PST
+Exit Code    : 0

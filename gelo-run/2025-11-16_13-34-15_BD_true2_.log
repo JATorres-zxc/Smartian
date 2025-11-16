@@ -1,0 +1,809 @@
+Label        : BD_true2
+Command      : dotnet build/Smartian.dll fuzz -p examples/bc/BD_true2.bin -a examples/abi/BD_true2.abi -t 120 -o examples/output/BD_true2 --useothersoracle -v 1
+Started      : 2025-11-16 13:34:15 PST
+Working Dir  : /Users/gelo/documents/thesis/smartian
+========================================
+[00:00:00:00] Fuzz target : examples/bc/BD_true2.bin
+[00:00:00:00] Fuzzing starts at 01:34:15
+[00:00:00:00] Time limit : 120 s
+[*] EVM Code Copy Analysis started.
+[*] EVM Trampoline Analysis started.
+[*] All done in 0.078488 sec.
+[DEBUG] Analyzing constructor @ 0
+Found sstore(<0x2, { }, { }>, <0x38D7EA4C68000, { }, { }>) @ 0xf
+Found sstore(<0x3, { }, { }>, <0x0, { }, { }>) @ 0x14
+Found sstore(<0x4, { }, { }>, <0x09660180, { }, { }>) @ 0x1c
+Found sload(<0x0, { }, { }>) @ 0x26
+Found sstore(<0x0, { }, { }>, <T, { }, { CALLER, var_0 }>) @ 0x5b
+Found codecopy(<0x0, { }, { }>, _, _), arg# = 0
+constructor: Def = { var_0, var_2, var_3, var_4 }, Use = { var_0 }
+Constructor tainted: { var_0 }
+[DEBUG] Analyzing setMinDuration(1674bade) @ eb
+Found sload(<0x0, { }, { }>) @ 0x413
+Found sstore(<0x3, { }, { }>, <T, { }, { }>) @ 0x46f
+setMinDuration(1674bade): (onlyOwner) Def = { var_3 }, Use = { var_0 }
+[DEBUG] Analyzing totalBuriedValue(16ea0728) @ 118
+totalBuriedValue(16ea0728): Def = {  }, Use = {  }
+[DEBUG] Analyzing getCapsuleInfo(2987ace5) @ 143
+Found sload(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>) @ 0x4f1
+Found sload(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>) @ 0x548
+Found sload(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>) @ 0x59f
+Found sload(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>) @ 0x5f6
+Found sload(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>) @ 0x64d
+getCapsuleInfo(2987ace5): Def = {  }, Use = { map_1.off_1 }
+[DEBUG] Analyzing totalBuriedCapsules(39900dcc) @ 1a0
+Found sload(<0x7, { }, { }>) @ 0x663
+totalBuriedCapsules(39900dcc): Def = {  }, Use = { var_7 }
+[DEBUG] Analyzing getNumberOfCapsules(39a89c1a) @ 1cb
+Found sload(<T, { Sha(*, 0x1) }, { }>) @ 0x6ab
+getNumberOfCapsules(39a89c1a): Def = {  }, Use = { map_1 }
+[DEBUG] Analyzing dig(40517083) @ 1f6
+Found sload(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>) @ 0x70d
+Found sload(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>) @ 0x721
+Found sload(<0x7, { }, { }>) @ 0x733
+Found sstore(<0x7, { }, { }>, <T, { }, { var_7 }>) @ 0x73f
+Found sstore(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>, <T, { }, { }>) @ 0x748
+Found sload(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>) @ 0x768
+dig(40517083): Def = { map_1.off_1, var_7 }, Use = { map_1.off_1, var_7 }
+[DEBUG] Analyzing minDeposit(41b3d185) @ 223
+Found sload(<0x2, { }, { }>) @ 0x79b
+minDeposit(41b3d185): Def = {  }, Use = { var_2 }
+[DEBUG] Analyzing minDuration(56715761) @ 24e
+Found sload(<0x3, { }, { }>) @ 0x7a1
+minDuration(56715761): Def = {  }, Use = { var_3 }
+[DEBUG] Analyzing maxDuration(6db5c8fd) @ 279
+Found sload(<0x4, { }, { }>) @ 0x7a7
+maxDuration(6db5c8fd): Def = {  }, Use = { var_4 }
+[DEBUG] Analyzing owner(8da5cb5b) @ 2a4
+Found sload(<0x0, { }, { }>) @ 0x7af
+owner(8da5cb5b): Def = {  }, Use = { var_0 }
+[DEBUG] Analyzing setMinDeposit(8fcc9cfb) @ 2fb
+Found sload(<0x0, { }, { }>) @ 0x7d4
+Found sstore(<0x2, { }, { }>, <T, { }, { }>) @ 0x830
+setMinDeposit(8fcc9cfb): (onlyOwner) Def = { var_2 }, Use = { var_0 }
+[DEBUG] Analyzing bury(abf74d5f) @ 328
+Found sload(<0x2, { }, { }>) @ 0x839
+Found sload(<0x4, { }, { }>) @ 0x84a
+Found sload(<0x3, { }, { }>) @ 0x85d
+Found sload(<0x3, { }, { }>) @ 0x86d
+Found sload(<T, { Sha(*, 0x1) }, { }>) @ 0x8ba
+Found sstore(<T, { Sha(*, 0x1) }, { }>, <_, { }, { }>) @ 0x91b
+Found sload(<T, { Sha(*, 0x1) }, { }>) @ 0x968
+Found sstore(<T, { Sha(*, 0x1) }, { }>, <T, { }, { map_1 }>) @ 0x973
+Found sload(<T, { Sha(*, 0x1) }, { }>) @ 0x9c9
+Found sload(<T, { Sha(*, 0x1) }, { }>) @ 0x9ea
+Found sstore(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>, <_, { }, { }>) @ 0xa02
+Found sstore(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>, <_, { }, { }>) @ 0xa0c
+Found sstore(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>, <_, { }, { }>) @ 0xa16
+Found sstore(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>, <_, { }, { }>) @ 0xa20
+Found sstore(<T, { Sha(... (Sha(*, 0x1) + 0x1) ...) + ? }, { }>, <_, { }, { }>) @ 0xa2a
+Found sload(<0x7, { }, { }>) @ 0xa33
+Found sstore(<0x7, { }, { }>, <T, { }, { var_7 }>) @ 0xa3e
+Found sload(<0x5, { }, { }>) @ 0xa45
+Found sstore(<0x5, { }, { }>, <T, { }, { var_5 }>) @ 0xa50
+Found sload(<0x6, { }, { }>) @ 0xa57
+Found sstore(<0x6, { }, { }>, <T, { }, { var_6 }>) @ 0xa62
+bury(abf74d5f): Def = { map_1, map_1.off_1, var_5, var_6, var_7 }, Use = { map_1, var_2, var_3, var_4, var_5, var_6, var_7 }
+[DEBUG] Analyzing totalCapsules(b49ce17f) @ 348
+Found sload(<0x5, { }, { }>) @ 0xa6a
+totalCapsules(b49ce17f): Def = {  }, Use = { var_5 }
+[DEBUG] Analyzing setMaxDuration(cf0f34c4) @ 373
+Found sload(<0x0, { }, { }>) @ 0xa72
+Found sstore(<0x4, { }, { }>, <T, { }, { }>) @ 0xace
+setMaxDuration(cf0f34c4): (onlyOwner) Def = { var_4 }, Use = { var_0 }
+[DEBUG] Analyzing totalValue(d4c3eea0) @ 3a0
+Found sload(<0x6, { }, { }>) @ 0xad5
+totalValue(d4c3eea0): Def = {  }, Use = { var_6 }
+[DEBUG] Analyzing transferOwnership(f2fde38b) @ 3cb
+Found sload(<0x0, { }, { }>) @ 0xadd
+Found sload(<0x0, { }, { }>) @ 0xb79
+Found sstore(<0x0, { }, { }>, <T, { }, { var_0 }>) @ 0xbae
+transferOwnership(f2fde38b): (onlyOwner) Def = { var_0 }, Use = { var_0 }
+Pruning out ["bury(abf74d5f)"]
+Pruning out ["dig(40517083)"]
+(20 candidate sequences)
+["transferOwnership(f2fde38b)"; "transferOwnership(f2fde38b)"]
+["transferOwnership(f2fde38b)"; "setMinDuration(1674bade)"]
+["transferOwnership(f2fde38b)"; "setMinDeposit(8fcc9cfb)"]
+["transferOwnership(f2fde38b)"; "setMaxDuration(cf0f34c4)"]
+["transferOwnership(f2fde38b)"; "owner(8da5cb5b)"]
+["setMaxDuration(cf0f34c4)"; "maxDuration(6db5c8fd)"]
+["setMaxDuration(cf0f34c4)"; "bury(abf74d5f)"]
+["setMinDeposit(8fcc9cfb)"; "minDeposit(41b3d185)"]
+["setMinDeposit(8fcc9cfb)"; "bury(abf74d5f)"]
+["setMinDuration(1674bade)"; "minDuration(56715761)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "totalValue(d4c3eea0)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "totalCapsules(b49ce17f)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "totalBuriedCapsules(39900dcc)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "getNumberOfCapsules(39a89c1a)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "getCapsuleInfo(2987ace5)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "dig(40517083)";
+ "totalBuriedCapsules(39900dcc)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "dig(40517083)";
+ "getCapsuleInfo(2987ace5)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "dig(40517083)"; "dig(40517083)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "dig(40517083)"; "bury(abf74d5f)"]
+["setMinDuration(1674bade)"; "bury(abf74d5f)"; "bury(abf74d5f)"]
+[00:00:00:00] Start main fuzzing phase
+[00:00:00:00] [*] Save new seed id-00000_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00001_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00002_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: setMinDeposit(8fcc9cfb), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00003_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: setMaxDuration(cf0f34c4), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00004_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: owner(8da5cb5b), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00005_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMaxDuration(cf0f34c4), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: maxDuration(6db5c8fd), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00006_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMaxDuration(cf0f34c4), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00007_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDeposit(8fcc9cfb), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: minDeposit(41b3d185), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] Tx#2 found BlockstateDependencyMythril at 855
+[00:00:00:00] Tx#2 found BlockstateDependencyMythril at 866
+[00:00:00:00] Tx#2 found BlockstateDependencyMythril at bc4
+[00:00:00:00] Tx#2 found BlockstateDependencyManticore at 84b
+[00:00:00:00] Tx#2 found BlockstateDependencyManticore at 85e
+[00:00:00:00] Tx#2 found BlockstateDependencyManticore at 86a
+[00:00:00:00] Tx#2 found BlockstateDependencyManticore at 9cf
+[00:00:00:00] [*] Save bug seed id-00000-BD_mant-BD_myth_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDeposit(8fcc9cfb), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00008_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDeposit(8fcc9cfb), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00009_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: minDuration(56715761), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00010_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: totalBuriedValue(16ea0728), From: NormalUser1, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00011_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 24CD2EDBA056B7C654A5408201B619D4F624FDDA
+( => TX 2 <= ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000EA0000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00012_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: getCapsuleInfo(2987ace5), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 40000000001E0000000000000000040000000000000000000000000000000001
+
+[00:00:00:00] [*] Save new seed id-00013_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: totalCapsules(b49ce17f), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00014_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDuration(1674bade), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000100000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00015_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 33B808A5AE24C410E8719B5CA2D5EF3931D3E89F
+(    TX 2    ) Function: setMinDeposit(8fcc9cfb), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00016_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: getNumberOfCapsules(39a89c1a), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 2 <= ) Function: transferOwnership(f2fde38b), From: NormalUser1, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000001F00000000000000000000000000
+
+[00:00:00:00] Tx#2 found BlockstateDependencyMythril at 715
+[00:00:00:00] Tx#2 found BlockstateDependencyManticore at 708
+[00:00:00:00] Tx#2 found BlockstateDependencyManticore at 741
+[00:00:00:00] Tx#2 found IntegerBug at 73b
+[00:00:00:00] Tx#2 found IntegerBugSFuzz at 73b
+[00:00:00:00] Tx#2 found IntegerBugMythril at 73b
+[00:00:00:00] Tx#2 found IntegerBugManticore at 73b
+[00:00:00:00] [*] Save bug seed id-00001-BD_mant-BD_myth-IB-IB_mant-IB_myth-IB_sfuzz_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: dig(40517083), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 000000000000000000000000FF00000000000000
+
+[00:00:00:00] [*] Save new seed id-00017_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: dig(40517083), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 000000000000000000000000FF00000000000000
+
+[00:00:00:00] [*] Save new seed id-00018_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 2    ) Function: totalBuriedCapsules(39900dcc), From: NormalUser3, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: transferOwnership(f2fde38b), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 00000000000000000000000FBD00000000000000
+
+[00:00:00:00] [*] Save new seed id-00019_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: transferOwnership(f2fde38b), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 6B773032D99FB9AAD6FC267651C446FA5F9301AF
+(    TX 2    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000003F00000000000000000000000000000000
+(    TX 3    ) Function: setMaxDuration(cf0f34c4), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00020_00000: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: owner(8da5cb5b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: transferOwnership(f2fde38b), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+( => TX 3 <= ) Function: dig(40517083), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 000000000000FA000200000000000000000000000000200000016C0000000000
+(    TX 4    ) Function: totalValue(d4c3eea0), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:00] [*] Save new seed id-00021_00000: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: getNumberOfCapsules(39a89c1a), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 8000000000000000000000000000000000000000000000000000000000000001
+(    TX 3    ) Function: bury(abf74d5f), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: transferOwnership(f2fde38b), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : address
+                 0000000000000000000000000000000000000000
+(    TX 5    ) Function: dig(40517083), From: NormalUser3, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 6    ) Function: maxDuration(6db5c8fd), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 7    ) Function: minDuration(56715761), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:01] Tx#1 found BlockstateDependencySFuzz at 84b
+[00:00:00:01] [*] Save bug seed id-00002-BD_sfuzz_00001: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: bury(abf74d5f), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 000000000000000000000000000000000000000000000000EC00000000000000
+          Arg1 : uint256
+                 0000001400000000000000000000000000000000008D00000000000000000000
+
+[00:00:00:01] [*] Save new seed id-00022_00001: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: bury(abf74d5f), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 000000000000000000000000000000000000000000000000EC00000000000000
+          Arg1 : uint256
+                 0000001400000000000000000000000000000000008D00000000000000000000
+
+[00:00:00:01] Tx#2 found BlockstateDependencySFuzz at 85e
+[00:00:00:01] Tx#2 found BlockstateDependencySFuzz at 86a
+[00:00:00:01] Tx#2 found BlockstateDependencySFuzz at 9cf
+[00:00:00:01] [*] Save bug seed id-00003-BD_sfuzz_00001: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMaxDuration(cf0f34c4), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 2 <= ) Function: bury(abf74d5f), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000001E00000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:01] [*] Save new seed id-00023_00001: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDeposit(8fcc9cfb), From: TargetOwner, UseAgent: true
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000E50000
+
+[00:00:00:02] Tx#4 found IntegerBug at a3a
+[00:00:00:02] Tx#4 found IntegerBugSFuzz at a3a
+[00:00:00:02] Tx#4 found IntegerBugMythril at a3a
+[00:00:00:02] Tx#4 found IntegerBugManticore at a3a
+[00:00:00:02] [*] Save bug seed id-00004-IB-IB_mant-IB_myth-IB_sfuzz_00002: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: dig(40517083), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 4 <= ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000002A00000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:03] [*] Save new seed id-00024_00003: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDuration(1674bade), From: NormalUser1, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 4000000000000000000000000000000000000000000000000000000000000001
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000100000000000000000
+(    TX 3    ) Function: dig(40517083), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: dig(40517083), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:03] Tx#3 found IntegerBugSFuzz at 84c
+[00:00:00:03] Tx#3 found IntegerBugMythril at 84c
+[00:00:00:03] [*] Save bug seed id-00005-IB_myth-IB_sfuzz_00003: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMaxDuration(cf0f34c4), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+(    TX 2    ) Function: totalBuriedCapsules(39900dcc), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000001E00000000000000
+          Arg1 : uint256
+                 000000000000000000000000000000E2000000000000000000005A0000000000
+( => TX 4 <= ) Function: dig(40517083), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000005400000000000000
+
+[00:00:00:03] Tx#2 found AssertionFailure at bc5
+[00:00:00:03] Tx#2 found IntegerBugSFuzz at 85f
+[00:00:00:03] Tx#2 found IntegerBugSFuzz at bb8
+[00:00:00:03] Tx#2 found IntegerBugMythril at 85f
+[00:00:00:03] Tx#2 found IntegerBugMythril at bb8
+[00:00:00:03] [*] Save bug seed id-00006-AF-IB_myth-IB_sfuzz_00003: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000400000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: getNumberOfCapsules(39a89c1a), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:03] [*] Save new seed id-00025_00003: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000400000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: getNumberOfCapsules(39a89c1a), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:06] [*] Save new seed id-00026_00006: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 1 <= ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 000000000000003F000000000000000000000000400000000000000000000000
+(    TX 2    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000EB0000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000004900
+(    TX 3    ) Function: dig(40517083), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000002A00000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+
+[00:00:00:07] [*] Save new seed id-00027_00007: 
+( => TX 0 <= ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 400000000000000000000000000000000000000000000000000000000F000000
+(    TX 2    ) Function: setMinDeposit(8fcc9cfb), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 4    ) Function: dig(40517083), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000001
+(    TX 5    ) Function: getCapsuleInfo(2987ace5), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000001
+
+[00:00:00:10] Tx#3 found BlockstateDependency at 77d
+[00:00:00:10] Tx#3 found BlockstateDependencySFuzz at 708
+[00:00:00:10] Tx#3 found BlockstateDependencySFuzz at 741
+[00:00:00:10] Tx#3 found BlockstateDependencyILF at 77d
+[00:00:00:10] [*] Save bug seed id-00007-BD-BD_ilf-BD_sfuzz_00010: 
+(    TX 0    ) Function: constructor, From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 1    ) Function: setMinDeposit(8fcc9cfb), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+( => TX 2 <= ) Function: bury(abf74d5f), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 000000000000000000000000000000000000000000000000000000000000E900
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+(    TX 3    ) Function: dig(40517083), From: NormalUser2, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000000000000000000000000000000000000000000000000000001
+(    TX 4    ) Function: setMinDuration(1674bade), From: TargetOwner, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 0000000000000020000000000000000000000000000000000000000000001100
+(    TX 5    ) Function: getCapsuleInfo(2987ace5), From: NormalUser3, UseAgent: false
+          Value : uint256
+                 0000000000000000000000000000000000000000000000000000000000000000
+          Arg1 : uint256
+                 3FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+
+Fuzzing timeout expired.
+[00:00:02:00] ===== Statistics =====
+[00:00:02:00] Total Executions: 301693
+[00:00:02:00] Deployment failures: 0
+[00:00:02:00] Test Cases: 28
+[00:00:02:00] Covered Edges: 109
+[00:00:02:00] Covered Instructions: 1593
+[00:00:02:00] Covered Def-Use Chains: 113
+[00:00:02:00] Found Bugs:
+[00:00:02:00]   Assertion Failure: 1
+[00:00:02:00]   Arbitrary Write: 0
+[00:00:02:00]   Block state Dependency: 1
+[00:00:02:00]   Control Hijack: 0
+[00:00:02:00]   Ether Leak: 0
+[00:00:02:00]   Integer Bug: 2
+[00:00:02:00]   Mishandled Exception: 0
+[00:00:02:00]   Multiple Send: 0
+[00:00:02:00]   Reentrancy: 0
+[00:00:02:00]   Suicidal Contract: 0
+[00:00:02:00]   Transaction Origin Use: 0
+[00:00:02:00]   Freezing Ether: 0
+[00:00:02:00]   Requirement Violation: 0
+[00:00:02:00] Done, clean up and exit...
+----------------------------------------
+Finished     : 2025-11-16 13:36:15 PST
+Exit Code    : 0
